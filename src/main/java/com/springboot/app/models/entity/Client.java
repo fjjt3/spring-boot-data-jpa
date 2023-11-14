@@ -1,6 +1,7 @@
 package com.springboot.app.models.entity;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,6 +19,7 @@ public class Client implements Serializable {
     private String email;
     @Column(name="created_at")
     @Temporal(TemporalType.DATE)
+    // @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdAt;
 
     public Long getId() {

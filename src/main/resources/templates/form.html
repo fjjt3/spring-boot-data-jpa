@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous">
+    </head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Spring Boot</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/list}">Clients</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <h1 th:text="${title}" class="text-secondary border border-success border-top-0 border-left-0 border-right-0"></h1>
+    <form th:action="@{/form}" th:object="${client}" method="post">
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-6">
+                <input type="text" th:field="*{name}" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Last Name</label>
+            <div class="col-sm-6">
+                <input type="text" th:field="*{lastname}" class="form-control"/></div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-6">
+                <input type="email" th:field="*{email}" class="form-control"/></div>
+        </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Date</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" th:field="*{createdAt}"/></div>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <input type="submit" value="Create Client" class="btn btn-primary"/></div>
+            </div>
+
+            <input type="hidden" th:field="*{id}"/>
+    </form>
+</div>
+</body>
+</html>
