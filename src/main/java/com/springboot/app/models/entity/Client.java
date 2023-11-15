@@ -1,7 +1,10 @@
 package com.springboot.app.models.entity;
 
 import jakarta.persistence.*;
-import org.springframework.format.annotation.DateTimeFormat;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+// import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -14,9 +17,14 @@ public class Client implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long Id;
 
+    @NotEmpty
     private String name;
+    @NotEmpty
     private String lastname;
+    @NotEmpty
+    @Email
     private String email;
+    @NotNull
     @Column(name="created_at")
     @Temporal(TemporalType.DATE)
     // @DateTimeFormat(pattern="yyyy-MM-dd")
