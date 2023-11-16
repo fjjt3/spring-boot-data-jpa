@@ -1,10 +1,10 @@
-package com.springboot.app.models.dao;
+package com.springboot.app.models.service;
 
 import com.springboot.app.models.entity.Client;
 
 import java.util.List;
 
-public interface IClientDao {
+public interface IClientService {
 
     public List<Client> findAll();
 
@@ -14,3 +14,4 @@ public interface IClientDao {
 
     public void delete(Long id);
 }
+

@@ -15,15 +15,33 @@ public class ClientDaoImpl implements IClientDao{
     private EntityManager em;
 
     @SuppressWarnings("unchecked")
-    @Transactional(readOnly = true)
+
     @Override
     public List<Client> findAll() {
         return em.createQuery("from Client").getResultList();
     }
 
+
     @Override
-    @Transactional
-    public void save(Client client) {
-        em.persist(client);
+    public Client findOne(Long id) {
+        return em.find(Client.class, id);
     }
+
+    @Override
+    public void save(Client client) {
+        if(client.getId() != null && client.getId() > 0)
+            em.merge(client);
+        else{
+            em.persist(client);
+        }
+
+    }
+
+    @Override
+    public void delete(Long id) {
+        em.remove(findOne(id));
+
+    }
+
+
 }
