@@ -1,16 +1,11 @@
 package com.springboot.app.models.dao;
 
 import com.springboot.app.models.entity.Client;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface IClientDao {
+public interface IClientDao extends CrudRepository<Client, Long> {
 
-    public List<Client> findAll();
 
-    public void save(Client client);
-
-    public Client findOne(Long id);
-
-    public void delete(Long id);
 }

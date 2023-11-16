@@ -9,14 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class ClienteServiceImpl implements IClientService{
+public class ClientServiceImpl implements IClientService{
 
     @Autowired
     private IClientDao  clientDao;
     @Override
     @Transactional(readOnly = true)
     public List<Client> findAll() {
-        return clientDao.findAll();
+        return (List<Client>) clientDao.findAll();
     }
 
     @Override
@@ -28,12 +28,12 @@ public class ClienteServiceImpl implements IClientService{
     @Override
     @Transactional(readOnly = true)
     public Client findOne(Long id) {
-        return clientDao.findOne(id);
+        return clientDao.findById(id).orElseGet(null);
     }
 
     @Override
     @Transactional
     public void delete(Long id) {
-        clientDao.delete(id);
+        clientDao.deleteById(id);
     }
 }

@@ -66,12 +66,12 @@ public class ClientController {
         return "redirect:list";
     }
 
-    @RequestMapping(value="/delete")
+    @RequestMapping(value="/delete/{id}")
     public String delete(@PathVariable(value="id") Long id){
         if(id>0){
             clientService.delete(id);
         }
-        return "redirect:list";
+        return "redirect:/list";
     }
 
 }
