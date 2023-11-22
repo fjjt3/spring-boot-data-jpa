@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title th:text="${title}">Insert title here</title>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -32,12 +32,12 @@
             <li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
         </ul>
     </div>
-    <form th:action="@{/form}" th:object="${client}" method="post">
+    <form th:action="@{/form}" th:object="${client}" method="post" enctype="multipart/form-data">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-6">
                 <input type="text" th:field="*{name}" class="form-control"
-                       th:errorclass="'form-control alert-danger'" /> <small
+                       th:errorclass="'form-control alert-danger'"/> <small
                     class="form-text text-danger"
                     th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
             </div>
@@ -46,7 +46,7 @@
             <label class="col-sm-2 col-form-label">Lastname</label>
             <div class="col-sm-6">
                 <input type="text" th:field="*{lastname}" class="form-control"
-                       th:errorclass="'form-control alert-danger'" /> <small
+                       th:errorclass="'form-control alert-danger'"/> <small
                     class="form-text text-danger"
                     th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></small>
             </div>
@@ -55,7 +55,7 @@
             <label class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-6">
                 <input type="text" th:field="*{email}" class="form-control"
-                       th:errorclass="'form-control alert-danger'" /> <small
+                       th:errorclass="'form-control alert-danger'"/> <small
                     class="form-text text-danger"
                     th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
             </div>
@@ -64,14 +64,20 @@
             <label class="col-sm-2 col-form-label">Date</label>
             <div class="col-sm-6">
                 <input type="text" class="form-control" th:field="*{createdAt}"
-                       th:errorclass="'form-control alert-danger'" /> <small
+                       th:errorclass="'form-control alert-danger'"/> <small
                     class="form-text text-danger"
                     th:if="${#fields.hasErrors('createdAt')}" th:errors="*{createdAt}"></small>
             </div>
         </div>
         <div class="form-group row">
+            <label for="file" class="col-sm-2 col-form-label">Photo</label>
             <div class="col-sm-6">
-                <input type="submit" value="Create Client" class="btn btn-primary" />
+                <input type="file" name="file" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6">
+                <input type="submit" value="Create Client" class="btn btn-primary"/>
             </div>
         </div>
 
